@@ -11,7 +11,7 @@ Bash Answers:
 
 Databases
 Databases Tasks:
-https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_databases/Taskdb.pdf
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_databases/taskdb.pdf
 Databases Answers:
 1) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_databases/l1_databases/dbtask_part1.pdf 
 2) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_databases/l1_databases/dbtask_part2.pdf
