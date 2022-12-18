@@ -25,6 +25,6 @@ https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_LinuxNetworks/Ta
 
 AWS
 AWS Tasks:
-https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_AWS/Task AWS.pdf
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_AWS/Task_AWS.pdf
 AWS Answers:
-https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_AWS/Answers AWS.pdf
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_AWS/Answers_AWS.pdf
