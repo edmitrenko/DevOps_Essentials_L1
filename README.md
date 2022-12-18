@@ -36,7 +36,7 @@ https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_LinuxNetworks/Ta
 
 Linux Networks Answers:
 
-https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_LinuxNetworks/Task_Linux_Net_amswer.pdf
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_LinuxNetworks/Task_Linux_Net_answer.pdf
 ###############################################################################################
 
 <strong>AWS</strong>
