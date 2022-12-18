@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `hospital`.`cabinets` (
   `cabinet_descr` VARCHAR(45) NULL,
   `department_id` INT NULL,
   PRIMARY KEY (`cabinet_id`),
-  INDEX `department_id_idx` (`department_id` ASC),
+  INDEX `department_id_idx` (`department_id` ASC) VISIBLE,
   CONSTRAINT `department_id`
     FOREIGN KEY (`department_id`)
     REFERENCES `hospital`.`department` (`department_id`)
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `hospital`.`patients` (
   `patient_address` VARCHAR(45) NULL,
   `patient_phone` INT NULL,
   PRIMARY KEY (`patient_id`),
-  INDEX `diagnos_id_idx` (`diagnos_id` ASC),
+  INDEX `diagnos_id_idx` (`diagnos_id` ASC) VISIBLE,
   CONSTRAINT `diagnos_id`
     FOREIGN KEY (`diagnos_id`)
     REFERENCES `hospital`.`diagnos` (`diagnos_id`)
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `hospital`.`scedule_date` (
   `scedule_date` DATETIME(6) NULL,
   `scedule_id` INT NULL,
   PRIMARY KEY (`scedule_date_id`),
-  INDEX `scedule_id_idx` (`scedule_id` ASC),
+  INDEX `scedule_id_idx` (`scedule_id` ASC) VISIBLE,
   CONSTRAINT `scedule_id`
     FOREIGN KEY (`scedule_id`)
     REFERENCES `hospital`.`scedule` (`scedule_id`)
@@ -151,11 +151,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `hospital`;
-INSERT INTO `hospital`.`department` (`department_id`, `department_descr`) VALUES (1, 'РҐС–СЂСѓСЂРіС–СЏ');
-INSERT INTO `hospital`.`department` (`department_id`, `department_descr`) VALUES (2, 'РќРµРІСЂРѕР»РѕРіС–СЏ');
-INSERT INTO `hospital`.`department` (`department_id`, `department_descr`) VALUES (3, 'РўРµСЂР°РїС–СЏ');
-INSERT INTO `hospital`.`department` (`department_id`, `department_descr`) VALUES (4, 'Р РµРЅС‚РіРµРЅРѕР»РѕРіС–СЏ');
-INSERT INTO `hospital`.`department` (`department_id`, `department_descr`) VALUES (5, 'РЈР»СЊС‚СЂР° Р·РІСѓРєРѕРІР° РґС–Р°РіРЅРѕСЃС‚РёРєР°');
+INSERT INTO `hospital`.`department` (`department_id`, `department_descr`) VALUES (1, 'Хірургія');
+INSERT INTO `hospital`.`department` (`department_id`, `department_descr`) VALUES (2, 'Неврологія');
+INSERT INTO `hospital`.`department` (`department_id`, `department_descr`) VALUES (3, 'Терапія');
+INSERT INTO `hospital`.`department` (`department_id`, `department_descr`) VALUES (4, 'Рентгенологія');
+INSERT INTO `hospital`.`department` (`department_id`, `department_descr`) VALUES (5, 'Ультра звукова діагностика');
 
 COMMIT;
 
@@ -165,11 +165,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `hospital`;
-INSERT INTO `hospital`.`cabinets` (`cabinet_id`, `cabinet_num`, `cabinet_descr`, `department_id`) VALUES (1, '10', 'РҐС–СЂСѓСЂРіС–С‡РЅРёР№ РєР°Р±С–РЅРµС‚', 1);
-INSERT INTO `hospital`.`cabinets` (`cabinet_id`, `cabinet_num`, `cabinet_descr`, `department_id`) VALUES (2, '11', 'РќРµРІСЂРѕР»РѕРіС–С‡РЅРёР№ РєР°Р±С–РЅРµС‚', 2);
-INSERT INTO `hospital`.`cabinets` (`cabinet_id`, `cabinet_num`, `cabinet_descr`, `department_id`) VALUES (3, '12', 'РўРµСЂР°РїРµРІС‚РёС‡РЅРёР№ РєР°Р±С–РЅРµС‚', 3);
-INSERT INTO `hospital`.`cabinets` (`cabinet_id`, `cabinet_num`, `cabinet_descr`, `department_id`) VALUES (4, '20', 'Р РµРЅС‚РіРµРЅРѕР»РѕРіС–С‡РЅРёР№ РєР°Р±С–РЅРµС‚', 4);
-INSERT INTO `hospital`.`cabinets` (`cabinet_id`, `cabinet_num`, `cabinet_descr`, `department_id`) VALUES (5, '21', 'РљР°Р±С–РЅРµС‚ СѓР»СЊС‚СЂР°Р·РІСѓРєРѕРІРѕС— РґС–Р°РіРЅРѕСЃС‚РёРєРё', 5);
+INSERT INTO `hospital`.`cabinets` (`cabinet_id`, `cabinet_num`, `cabinet_descr`, `department_id`) VALUES (1, '10', 'Хірургічний кабінет', 1);
+INSERT INTO `hospital`.`cabinets` (`cabinet_id`, `cabinet_num`, `cabinet_descr`, `department_id`) VALUES (2, '11', 'Неврологічний кабінет', 2);
+INSERT INTO `hospital`.`cabinets` (`cabinet_id`, `cabinet_num`, `cabinet_descr`, `department_id`) VALUES (3, '12', 'Терапевтичний кабінет', 3);
+INSERT INTO `hospital`.`cabinets` (`cabinet_id`, `cabinet_num`, `cabinet_descr`, `department_id`) VALUES (4, '20', 'Рентгенологічний кабінет', 4);
+INSERT INTO `hospital`.`cabinets` (`cabinet_id`, `cabinet_num`, `cabinet_descr`, `department_id`) VALUES (5, '21', 'Кабінет ультразвукової діагностики', 5);
 
 COMMIT;
 
@@ -179,11 +179,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `hospital`;
-INSERT INTO `hospital`.`doctors` (`doctor_id`, `doctor_name`, `doctor_descr`) VALUES (1, 'Р›С–РєР°СЂ1', 'Р»С–РєР°СЂ-С…С–СЂСѓСЂРі');
-INSERT INTO `hospital`.`doctors` (`doctor_id`, `doctor_name`, `doctor_descr`) VALUES (2, 'Р›С–РєР°СЂ2', 'Р›С–РєР°СЂ-РЅРµРІСЂРѕРїР°С‚РѕР»РѕРі');
-INSERT INTO `hospital`.`doctors` (`doctor_id`, `doctor_name`, `doctor_descr`) VALUES (3, 'Р›С–РєР°СЂ3', 'Р›С–РєР°СЂ-С‚РµСЂР°РїРµРІС‚');
-INSERT INTO `hospital`.`doctors` (`doctor_id`, `doctor_name`, `doctor_descr`) VALUES (4, 'Р›С–РєР°СЂ4', 'Р›С–РєР°СЂ-СЂРµРЅРіРµРЅРѕР»РѕРі');
-INSERT INTO `hospital`.`doctors` (`doctor_id`, `doctor_name`, `doctor_descr`) VALUES (5, 'Р›С–РєР°СЂ5', 'Р›С–РєР°СЂ Р· СѓР»СЊС‚СЂР°Р·РІСѓРєРѕРІРѕС— РґС–Р°РіРЅРѕСЃС‚РёРєРё');
+INSERT INTO `hospital`.`doctors` (`doctor_id`, `doctor_name`, `doctor_descr`) VALUES (1, 'Лікар1', 'лікар-хірург');
+INSERT INTO `hospital`.`doctors` (`doctor_id`, `doctor_name`, `doctor_descr`) VALUES (2, 'Лікар2', 'Лікар-невропатолог');
+INSERT INTO `hospital`.`doctors` (`doctor_id`, `doctor_name`, `doctor_descr`) VALUES (3, 'Лікар3', 'Лікар-терапевт');
+INSERT INTO `hospital`.`doctors` (`doctor_id`, `doctor_name`, `doctor_descr`) VALUES (4, 'Лікар4', 'Лікар-ренгенолог');
+INSERT INTO `hospital`.`doctors` (`doctor_id`, `doctor_name`, `doctor_descr`) VALUES (5, 'Лікар5', 'Лікар з ультразвукової діагностики');
 
 COMMIT;
 
@@ -193,10 +193,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `hospital`;
-INSERT INTO `hospital`.`scedule` (`scedule_id`, `cabinet_num`, `doctor_name`, `patient_name`) VALUES (1, '10', 'Р›С–РєР°СЂ1', 'РџР°С†С–С”РЅС‚1');
-INSERT INTO `hospital`.`scedule` (`scedule_id`, `cabinet_num`, `doctor_name`, `patient_name`) VALUES (2, '10', 'Р›С–РєР°СЂ2', 'РџР°С†С–С”РЅС‚2');
-INSERT INTO `hospital`.`scedule` (`scedule_id`, `cabinet_num`, `doctor_name`, `patient_name`) VALUES (3, '11', 'Р›С–РєР°СЂ3', 'РџР°С†С–С”РЅС‚3');
-INSERT INTO `hospital`.`scedule` (`scedule_id`, `cabinet_num`, `doctor_name`, `patient_name`) VALUES (4, '20', 'Р›С–РєР°СЂ4', 'РџР°С†С–С”РЅС‚4');
+INSERT INTO `hospital`.`scedule` (`scedule_id`, `cabinet_num`, `doctor_name`, `patient_name`) VALUES (1, '10', 'Лікар1', 'Пацієнт1');
+INSERT INTO `hospital`.`scedule` (`scedule_id`, `cabinet_num`, `doctor_name`, `patient_name`) VALUES (2, '10', 'Лікар2', 'Пацієнт2');
+INSERT INTO `hospital`.`scedule` (`scedule_id`, `cabinet_num`, `doctor_name`, `patient_name`) VALUES (3, '11', 'Лікар3', 'Пацієнт3');
+INSERT INTO `hospital`.`scedule` (`scedule_id`, `cabinet_num`, `doctor_name`, `patient_name`) VALUES (4, '20', 'Лікар4', 'Пацієнт4');
 
 COMMIT;
 
@@ -206,10 +206,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `hospital`;
-INSERT INTO `hospital`.`diagnos` (`diagnos_id`, `diagnost_descr`) VALUES (1, 'Р“РѕСЃС‚СЂРёР№ РєР°С‚Р°СЂР°Р»СЊРЅРёР№ Р°РїРµРЅРґРёС†РёС‚');
-INSERT INTO `hospital`.`diagnos` (`diagnos_id`, `diagnost_descr`) VALUES (2, 'Р“РѕСЃС‚СЂРёР№ РіР°РЅРіСЂРµРЅРѕР·РЅРёР№ Р°РїРµРЅРґРёС†РёС‚.');
-INSERT INTO `hospital`.`diagnos` (`diagnos_id`, `diagnost_descr`) VALUES (3, 'Р“РѕСЃС‚СЂРёР№ РёРЅС‚РµСЂСЃС‚РёС†РёР°Р»СЊРЅРёР№ РїР°РЅРєСЂРµР°С‚РёС‚.');
-INSERT INTO `hospital`.`diagnos` (`diagnos_id`, `diagnost_descr`) VALUES (4, 'РџСЂРёРґР±Р°РЅР° РЅРµРІРїСЂР°РІРёРјР°СЏ РїСѓРїРєРѕРІР° РіСЂРёР¶Р°');
+INSERT INTO `hospital`.`diagnos` (`diagnos_id`, `diagnost_descr`) VALUES (1, 'Гострий катаральний апендицит');
+INSERT INTO `hospital`.`diagnos` (`diagnos_id`, `diagnost_descr`) VALUES (2, 'Гострий гангренозний апендицит.');
+INSERT INTO `hospital`.`diagnos` (`diagnos_id`, `diagnost_descr`) VALUES (3, 'Гострий интерстициальний панкреатит.');
+INSERT INTO `hospital`.`diagnos` (`diagnos_id`, `diagnost_descr`) VALUES (4, 'Придбана невправимая пупкова грижа');
 
 COMMIT;
 
@@ -219,10 +219,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `hospital`;
-INSERT INTO `hospital`.`patients` (`patient_id`, `patient_name`, `diagnos_id`, `patient_sex`, `patient_age`, `patient_address`, `patient_phone`) VALUES (1, 'РџР°С†С–С”РЅС‚1', 1, 'С‡', '26', 'РІСѓР» Р’РёРЅРѕРіСЂР°РґРЅР°', 1111111);
-INSERT INTO `hospital`.`patients` (`patient_id`, `patient_name`, `diagnos_id`, `patient_sex`, `patient_age`, `patient_address`, `patient_phone`) VALUES (2, 'РџР°С†С–С”РЅС‚2', 2, 'С‡', '69', 'РІСѓР» РЎР»РёРІРѕРІР°', 2222222);
-INSERT INTO `hospital`.`patients` (`patient_id`, `patient_name`, `diagnos_id`, `patient_sex`, `patient_age`, `patient_address`, `patient_phone`) VALUES (3, 'РџР°С†С–С”РЅС‚3', 3, 'С‡', '19', 'РІСѓР» Р“СЂСѓС€РµРІР°', 3333333);
-INSERT INTO `hospital`.`patients` (`patient_id`, `patient_name`, `diagnos_id`, `patient_sex`, `patient_age`, `patient_address`, `patient_phone`) VALUES (4, 'РџР°С†С–С”РЅС‚4', 4, 'Р¶', '64', 'РІСѓР» РЎРѕРЅСЏС€РЅРёРєРѕРІР°', 4444444);
+INSERT INTO `hospital`.`patients` (`patient_id`, `patient_name`, `diagnos_id`, `patient_sex`, `patient_age`, `patient_address`, `patient_phone`) VALUES (1, 'Пацієнт1', 1, 'ч', '26', 'вул Виноградна', 1111111);
+INSERT INTO `hospital`.`patients` (`patient_id`, `patient_name`, `diagnos_id`, `patient_sex`, `patient_age`, `patient_address`, `patient_phone`) VALUES (2, 'Пацієнт2', 2, 'ч', '69', 'вул Сливова', 2222222);
+INSERT INTO `hospital`.`patients` (`patient_id`, `patient_name`, `diagnos_id`, `patient_sex`, `patient_age`, `patient_address`, `patient_phone`) VALUES (3, 'Пацієнт3', 3, 'ч', '19', 'вул Грушева', 3333333);
+INSERT INTO `hospital`.`patients` (`patient_id`, `patient_name`, `diagnos_id`, `patient_sex`, `patient_age`, `patient_address`, `patient_phone`) VALUES (4, 'Пацієнт4', 4, 'ж', '64', 'вул Соняшникова', 4444444);
 
 COMMIT;
 
@@ -238,5 +238,4 @@ INSERT INTO `hospital`.`scedule_date` (`scedule_date_id`, `scedule_date`, `scedu
 INSERT INTO `hospital`.`scedule_date` (`scedule_date_id`, `scedule_date`, `scedule_id`) VALUES (4, '2022-10-25 12:00', 4);
 
 COMMIT;
-
 
