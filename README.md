@@ -1,6 +1,6 @@
 # DevOps_Essentials_L1
 
-BASH
+<strong>BASH</strong>
 
 Bash Tasks:
 
@@ -12,7 +12,9 @@ Bash Answers:
 2) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_bash/parser.sh
 3) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_bash/backup.sh
 
-Databases
+###############################################################################################
+
+<strong>Databases</strong>
 
 Databases Tasks:
 
@@ -24,7 +26,9 @@ Databases Answers:
 2) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_databases/dbtask_part2.pdf
 3) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_databases/dbtask_part3.pdf
 
-Linux Networks
+###############################################################################################
+
+<strong>Linux Networks</strong>
 
 Linux Networks Tasks:
 
@@ -32,9 +36,10 @@ https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_LinuxNetworks/Ta
 
 Linux Networks Answers:
 
-https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_LinuxNetworks/Task_Linux_Net_amswer.pdf 
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_LinuxNetworks/Task_Linux_Net_amswer.pdf
+###############################################################################################
 
-AWS
+<strong>AWS</strong>
 
 AWS Tasks:
 
