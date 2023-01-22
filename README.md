@@ -48,3 +48,17 @@ https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_AWS/Task_AWS.pdf
 AWS Answers:
 
 https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_AWS/Answers_AWS.pdf
+###############################################################################################
+
+<strong>Azure</strong>
+
+Azure Tasks:
+
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_azure/Azure_home_work.docx
+
+AWS Answers:
+
+1) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_azure/Azure_Part1.pdf 
+2) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_azure/Azure_Part2.pdf 
+3) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_azure/Azure_Part3.pdf 
+
