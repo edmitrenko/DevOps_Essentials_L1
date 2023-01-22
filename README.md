@@ -48,7 +48,7 @@ https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_AWS/Task_AWS.pdf
 AWS Answers:
 
 https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_AWS/Answers_AWS.pdf
-########################################################################################
+#######################################################################################
 
 <strong>Azure</strong>
 
