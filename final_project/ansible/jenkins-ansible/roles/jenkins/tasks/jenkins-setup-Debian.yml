@@ -1,0 +1,60 @@
+---
+- name: Update and upgrade apt packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400 
+
+- name: Install list of Debian packages.
+  become: yes
+  ansible.builtin.package:
+    name: 
+      - curl
+      - apt-transport-https
+      - gnupg
+      - openjdk-11-jre
+    state: present  
+       
+- name: Add Jenkins apt repository key.
+  ansible.builtin.get_url:
+    url: "{{ jenkins_repo_key_url }}"
+    dest: /etc/apt/trusted.gpg.d/jenkins.asc
+    mode: '0644'
+    force: true
+
+- name: Add Jenkins apt repository.
+  apt_repository:
+    repo: "{{ jenkins_repo_url }}"
+    state: present
+    update_cache: true
+  when: jenkins_repo_url | default(false)
+  tags: ['skip_ansible_lint']
+
+- name: Install jenkins
+  become: yes
+  apt:
+    name: jenkins
+    state: present
+
+- name: start jenkins
+  systemd:
+    name: jenkins
+    state: started
+
+- name: enable jenkins
+  systemd:
+    name: jenkins
+    enabled: true
+
+- name: sleep for 30 seconds and continue with play
+  wait_for: timeout=30
+  delegate_to: localhost
+
+- name: init password jenkin
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: result
+
+- name: print init password jenkins
+  debug:
+    var: result.stdout

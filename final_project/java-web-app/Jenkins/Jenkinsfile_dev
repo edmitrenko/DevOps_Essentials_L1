@@ -1,0 +1,31 @@
+pipeline{
+  agent {label 'docker'}  
+
+   parameters { 
+     string(name: 'tomcat_dev', defaultValue: '10.20.1.10', description: 'Tomcat dev')
+    } 
+  
+  stages{
+     stage("Build"){
+       agent {
+        docker {
+            image 'maven:latest'
+            args '-u root -v /tmp:/tmp -v $HOME/.m2:/root/.m2'
+            reuseNode true
+        }
+       }
+
+       steps{       
+	    // Run Maven on a Unix agent
+            sh "unset MAVEN_CONFIG && env && ./mvnw clean install"
+            }
+     }
+      stage("Deploy"){
+       steps{
+          sshagent(['tomcat-server-dev']) {
+          sh "scp -o StrictHostKeyChecking=no target/*.war ubuntu@${params.tomcat_dev}:/opt/tomcat/webapps"
+          }
+       } 
+     }     
+  }  
+}    

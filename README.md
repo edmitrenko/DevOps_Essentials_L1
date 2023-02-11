@@ -62,3 +62,26 @@ AWS Answers:
 2) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_azure/Azure_Part2.pdf 
 3) https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/l1_azure/Azure_Part3.pdf 
 
+#######################################################################################
+
+<strong>Final Project</strong>
+
+Java Web App:
+
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/final_project/java-web-app
+
+Terraform modules:
+
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/final_project/terraform/modules
+
+Terraform configs:
+
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/final_project/terraform/java_project
+
+Ansible:
+
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/final_project/ansible
+
+Final Project description:
+
+https://github.com/edmitrenko/DevOps_Essentials_L1/blob/main/final_project/Final_project_eng.pdf

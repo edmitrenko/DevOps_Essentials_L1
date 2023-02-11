@@ -1,0 +1,61 @@
+---
+- name: Upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+
+- name: Enable java-11-openjdk
+  become: yes
+  shell: amazon-linux-extras enable java-openjdk11
+
+- name: Install list of RedHat packages
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - curl
+    - initscripts
+    - wget
+    - git
+    - java-11-openjdk
+
+- name: Ensure Jenkins repo is installed.
+  get_url:
+    url: "{{ jenkins_repo_url }}"
+    dest: /etc/yum.repos.d/jenkins.repo
+  when: jenkins_repo_url | default(false)
+
+- name: Add Jenkins repo GPG key.
+  rpm_key:
+    state: present
+    key: "{{ jenkins_repo_key_url }}"
+  when: jenkins_repo_url | default(false)
+
+- name: Install jenkins
+  become: yes
+  yum:
+    name: jenkins
+    state: present
+
+- name: start jenkins
+  systemd:
+    name: jenkins
+    state: started
+
+- name: enable jenkins
+  systemd:
+    name: jenkins
+    enabled: true
+
+- name: sleep for 30 seconds and continue with play
+  wait_for: timeout=30
+  delegate_to: localhost
+
+- name: init password jenkin
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: result
+
+- name: print init password jenkins
+  debug:
+    var: result.stdout

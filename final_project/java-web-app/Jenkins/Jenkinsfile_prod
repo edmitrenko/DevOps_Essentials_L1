@@ -1,0 +1,48 @@
+pipeline{
+  agent {label 'docker'}
+  
+  parameters { 
+     string(name: 'tomcat_1', defaultValue: '10.30.1.228', description: 'Tomcat Node-1')
+     string(name: 'tomcat_2', defaultValue: '10.30.1.25', description: 'Tomcat Node-2')
+    } 
+
+
+  stages{
+     stage("Build"){
+       agent {
+        docker {
+            image 'maven:latest'
+            args '-u root -v /tmp:/tmp -v $HOME/.m2:/root/.m2'
+            reuseNode true
+        }
+       }
+       
+        steps{       
+	    // Run Maven on a Unix agent
+            sh "unset MAVEN_CONFIG && env && ./mvnw clean install"
+            }
+     }
+			
+     stage("Deploy"){
+       parallel{
+        stage ('Deploy to Tomcat Node-1'){ 
+          steps{
+             sshagent(['tomcat-server-prod']) {
+             sh "scp -o StrictHostKeyChecking=no target/*.war ubuntu@${params.tomcat_1}:/opt/tomcat/webapps"
+             }
+       
+          }
+        }
+
+        stage ('Deploy to Tomcat Node-2'){ 
+          steps{
+             sshagent(['tomcat-server-prod']) {
+             sh "scp -o StrictHostKeyChecking=no target/*.war ubuntu@${params.tomcat_2}:/opt/tomcat/webapps"
+             }
+         
+          }
+        } 
+       }     
+     }  
+  }    
+} 

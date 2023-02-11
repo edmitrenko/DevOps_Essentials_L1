@@ -1,0 +1,17 @@
+---
+- name: Tomcat deployment playbook
+  hosts: prod1              # Inventory hosts group / server to act on  (dev, prod1, prod2)
+  become: yes               # If to escalate privilege
+  become_method: sudo       # Set become method
+  remote_user: root         # Update username for remote server
+  vars:
+    tomcat_ver: 9.0.71               # Tomcat version to install
+    user_login: admin                # User who can access the UI manager section only
+    user_pass: admin123              # UI manager user password 
+    env: prod                        # environment - need to change
+    server_port: 8006                # tomcat server ports (only for prod environment): need to change - tomcat-node1 - 8006, tomcat-node2 - 8007
+    http_port: 8081                  # tomcat http ports (only for prod environment): need to change - tomcat-node1 - 8081, tomcat-node2 - 8082
+    arj_port: 8009                   # tomcat arj ports (only for prod environment): need to change - tomcat-node1 - 8009, tomcat-node2 - 8010
+  roles:
+    - tomcat
+

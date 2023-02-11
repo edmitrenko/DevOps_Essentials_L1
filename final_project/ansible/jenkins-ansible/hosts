@@ -1,0 +1,2 @@
+[jenkins]
+X.X.X.X   ansible_user=XXX ansible_ssh_private_key_file=/home/XXX/ansible-jenkins/key.pem

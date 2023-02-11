@@ -1,0 +1,9 @@
+---
+- name: Install Jenkins
+  hosts: jenkins
+  become: true
+  become_method: sudo      
+  remote_user: root         
+
+  roles:
+    - jenkins
